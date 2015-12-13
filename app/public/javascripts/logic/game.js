@@ -1,0 +1,1 @@
+var gameDeck = Deck.generate();
