@@ -1,0 +1,288 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/bin/npm', 'install' ]
+info using npm@1.1.4
+info using node@v0.6.12
+verbose config file /home/harrison/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose caching /home/harrison/coding/Russian-Alphabet-Game/app/package.json
+verbose loadDefaults app@0.0.0
+verbose readDependencies: using package.json deps
+verbose where, deps [ '/home/harrison/coding/Russian-Alphabet-Game/app',
+verbose where, deps   [ 'backbone',
+verbose where, deps     'body-parser',
+verbose where, deps     'chai',
+verbose where, deps     'cookie-parser',
+verbose where, deps     'debug',
+verbose where, deps     'express',
+verbose where, deps     'jade',
+verbose where, deps     'lodash',
+verbose where, deps     'mocha',
+verbose where, deps     'morgan',
+verbose where, deps     'serve-favicon' ] ]
+verbose from cache /home/harrison/coding/Russian-Alphabet-Game/app/package.json
+info preinstall app@0.0.0
+verbose from cache /home/harrison/coding/Russian-Alphabet-Game/app/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'backbone@^1.2.3', null ]
+silly cache add: name, spec, args [ undefined, 'backbone@^1.2.3', [ 'backbone@^1.2.3', null ] ]
+verbose parsed url { pathname: 'backbone@^1.2.3',
+verbose parsed url   path: 'backbone@^1.2.3',
+verbose parsed url   href: 'backbone@^1.2.3' }
+silly cache add: name, spec, args [ 'backbone', '^1.2.3', [ 'backbone', '^1.2.3' ] ]
+verbose parsed url { pathname: '^1.2.3', path: '^1.2.3', href: '^1.2.3' }
+verbose addNamed [ 'backbone', '^1.2.3' ]
+verbose addNamed [ null, null ]
+info addNameTag [ 'backbone', '^1.2.3' ]
+verbose cache add [ 'body-parser@~1.13.2', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'body-parser@~1.13.2',
+silly cache add: name, spec, args   [ 'body-parser@~1.13.2', null ] ]
+verbose parsed url { pathname: 'body-parser@~1.13.2',
+verbose parsed url   path: 'body-parser@~1.13.2',
+verbose parsed url   href: 'body-parser@~1.13.2' }
+silly cache add: name, spec, args [ 'body-parser', '~1.13.2', [ 'body-parser', '~1.13.2' ] ]
+verbose parsed url { pathname: '~1.13.2', path: '~1.13.2', href: '~1.13.2' }
+verbose addNamed [ 'body-parser', '~1.13.2' ]
+verbose addNamed [ null, '>=1.13.2- <1.14.0-' ]
+silly name, range, hasData [ 'body-parser', '>=1.13.2- <1.14.0-', false ]
+verbose raw, before any munging backbone
+verbose url resolving [ 'http://registry.npmjs.org/', './backbone' ]
+verbose url resolved http://registry.npmjs.org/backbone
+http GET http://registry.npmjs.org/backbone
+verbose raw, before any munging body-parser
+verbose url resolving [ 'http://registry.npmjs.org/', './body-parser' ]
+verbose url resolved http://registry.npmjs.org/body-parser
+http GET http://registry.npmjs.org/body-parser
+verbose cache add [ 'chai@^3.4.1', null ]
+silly cache add: name, spec, args [ undefined, 'chai@^3.4.1', [ 'chai@^3.4.1', null ] ]
+verbose parsed url { pathname: 'chai@^3.4.1',
+verbose parsed url   path: 'chai@^3.4.1',
+verbose parsed url   href: 'chai@^3.4.1' }
+silly cache add: name, spec, args [ 'chai', '^3.4.1', [ 'chai', '^3.4.1' ] ]
+verbose parsed url { pathname: '^3.4.1', path: '^3.4.1', href: '^3.4.1' }
+verbose addNamed [ 'chai', '^3.4.1' ]
+verbose addNamed [ null, null ]
+info addNameTag [ 'chai', '^3.4.1' ]
+verbose cache add [ 'cookie-parser@~1.3.5', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'cookie-parser@~1.3.5',
+silly cache add: name, spec, args   [ 'cookie-parser@~1.3.5', null ] ]
+verbose parsed url { pathname: 'cookie-parser@~1.3.5',
+verbose parsed url   path: 'cookie-parser@~1.3.5',
+verbose parsed url   href: 'cookie-parser@~1.3.5' }
+silly cache add: name, spec, args [ 'cookie-parser', '~1.3.5', [ 'cookie-parser', '~1.3.5' ] ]
+verbose parsed url { pathname: '~1.3.5', path: '~1.3.5', href: '~1.3.5' }
+verbose addNamed [ 'cookie-parser', '~1.3.5' ]
+verbose addNamed [ null, '>=1.3.5- <1.4.0-' ]
+silly name, range, hasData [ 'cookie-parser', '>=1.3.5- <1.4.0-', false ]
+verbose cache add [ 'debug@~2.2.0', null ]
+silly cache add: name, spec, args [ undefined, 'debug@~2.2.0', [ 'debug@~2.2.0', null ] ]
+verbose parsed url { pathname: 'debug@~2.2.0',
+verbose parsed url   path: 'debug@~2.2.0',
+verbose parsed url   href: 'debug@~2.2.0' }
+silly cache add: name, spec, args [ 'debug', '~2.2.0', [ 'debug', '~2.2.0' ] ]
+verbose parsed url { pathname: '~2.2.0', path: '~2.2.0', href: '~2.2.0' }
+verbose addNamed [ 'debug', '~2.2.0' ]
+verbose addNamed [ null, '>=2.2.0- <2.3.0-' ]
+silly name, range, hasData [ 'debug', '>=2.2.0- <2.3.0-', false ]
+verbose cache add [ 'express@~4.13.1', null ]
+silly cache add: name, spec, args [ undefined, 'express@~4.13.1', [ 'express@~4.13.1', null ] ]
+verbose parsed url { pathname: 'express@~4.13.1',
+verbose parsed url   path: 'express@~4.13.1',
+verbose parsed url   href: 'express@~4.13.1' }
+silly cache add: name, spec, args [ 'express', '~4.13.1', [ 'express', '~4.13.1' ] ]
+verbose parsed url { pathname: '~4.13.1', path: '~4.13.1', href: '~4.13.1' }
+verbose addNamed [ 'express', '~4.13.1' ]
+verbose addNamed [ null, '>=4.13.1- <4.14.0-' ]
+silly name, range, hasData [ 'express', '>=4.13.1- <4.14.0-', false ]
+verbose cache add [ 'jade@~1.11.0', null ]
+silly cache add: name, spec, args [ undefined, 'jade@~1.11.0', [ 'jade@~1.11.0', null ] ]
+verbose parsed url { pathname: 'jade@~1.11.0',
+verbose parsed url   path: 'jade@~1.11.0',
+verbose parsed url   href: 'jade@~1.11.0' }
+silly cache add: name, spec, args [ 'jade', '~1.11.0', [ 'jade', '~1.11.0' ] ]
+verbose parsed url { pathname: '~1.11.0', path: '~1.11.0', href: '~1.11.0' }
+verbose addNamed [ 'jade', '~1.11.0' ]
+verbose addNamed [ null, '>=1.11.0- <1.12.0-' ]
+silly name, range, hasData [ 'jade', '>=1.11.0- <1.12.0-', false ]
+verbose cache add [ 'lodash@^3.10.1', null ]
+silly cache add: name, spec, args [ undefined, 'lodash@^3.10.1', [ 'lodash@^3.10.1', null ] ]
+verbose parsed url { pathname: 'lodash@^3.10.1',
+verbose parsed url   path: 'lodash@^3.10.1',
+verbose parsed url   href: 'lodash@^3.10.1' }
+silly cache add: name, spec, args [ 'lodash', '^3.10.1', [ 'lodash', '^3.10.1' ] ]
+verbose parsed url { pathname: '^3.10.1', path: '^3.10.1', href: '^3.10.1' }
+verbose addNamed [ 'lodash', '^3.10.1' ]
+verbose addNamed [ null, null ]
+info addNameTag [ 'lodash', '^3.10.1' ]
+verbose cache add [ 'mocha@^2.3.4', null ]
+silly cache add: name, spec, args [ undefined, 'mocha@^2.3.4', [ 'mocha@^2.3.4', null ] ]
+verbose parsed url { pathname: 'mocha@^2.3.4',
+verbose parsed url   path: 'mocha@^2.3.4',
+verbose parsed url   href: 'mocha@^2.3.4' }
+silly cache add: name, spec, args [ 'mocha', '^2.3.4', [ 'mocha', '^2.3.4' ] ]
+verbose parsed url { pathname: '^2.3.4', path: '^2.3.4', href: '^2.3.4' }
+verbose addNamed [ 'mocha', '^2.3.4' ]
+verbose addNamed [ null, null ]
+info addNameTag [ 'mocha', '^2.3.4' ]
+verbose cache add [ 'morgan@~1.6.1', null ]
+silly cache add: name, spec, args [ undefined, 'morgan@~1.6.1', [ 'morgan@~1.6.1', null ] ]
+verbose parsed url { pathname: 'morgan@~1.6.1',
+verbose parsed url   path: 'morgan@~1.6.1',
+verbose parsed url   href: 'morgan@~1.6.1' }
+silly cache add: name, spec, args [ 'morgan', '~1.6.1', [ 'morgan', '~1.6.1' ] ]
+verbose parsed url { pathname: '~1.6.1', path: '~1.6.1', href: '~1.6.1' }
+verbose addNamed [ 'morgan', '~1.6.1' ]
+verbose addNamed [ null, '>=1.6.1- <1.7.0-' ]
+silly name, range, hasData [ 'morgan', '>=1.6.1- <1.7.0-', false ]
+verbose cache add [ 'serve-favicon@~2.3.0', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'serve-favicon@~2.3.0',
+silly cache add: name, spec, args   [ 'serve-favicon@~2.3.0', null ] ]
+verbose parsed url { pathname: 'serve-favicon@~2.3.0',
+verbose parsed url   path: 'serve-favicon@~2.3.0',
+verbose parsed url   href: 'serve-favicon@~2.3.0' }
+silly cache add: name, spec, args [ 'serve-favicon', '~2.3.0', [ 'serve-favicon', '~2.3.0' ] ]
+verbose parsed url { pathname: '~2.3.0', path: '~2.3.0', href: '~2.3.0' }
+verbose addNamed [ 'serve-favicon', '~2.3.0' ]
+verbose addNamed [ null, '>=2.3.0- <2.4.0-' ]
+silly name, range, hasData [ 'serve-favicon', '>=2.3.0- <2.4.0-', false ]
+verbose raw, before any munging chai
+verbose url resolving [ 'http://registry.npmjs.org/', './chai' ]
+verbose url resolved http://registry.npmjs.org/chai
+http GET http://registry.npmjs.org/chai
+verbose raw, before any munging cookie-parser
+verbose url resolving [ 'http://registry.npmjs.org/', './cookie-parser' ]
+verbose url resolved http://registry.npmjs.org/cookie-parser
+http GET http://registry.npmjs.org/cookie-parser
+verbose raw, before any munging debug
+verbose url resolving [ 'http://registry.npmjs.org/', './debug' ]
+verbose url resolved http://registry.npmjs.org/debug
+http GET http://registry.npmjs.org/debug
+verbose raw, before any munging express
+verbose url resolving [ 'http://registry.npmjs.org/', './express' ]
+verbose url resolved http://registry.npmjs.org/express
+http GET http://registry.npmjs.org/express
+verbose raw, before any munging jade
+verbose url resolving [ 'http://registry.npmjs.org/', './jade' ]
+verbose url resolved http://registry.npmjs.org/jade
+http GET http://registry.npmjs.org/jade
+verbose raw, before any munging lodash
+verbose url resolving [ 'http://registry.npmjs.org/', './lodash' ]
+verbose url resolved http://registry.npmjs.org/lodash
+http GET http://registry.npmjs.org/lodash
+verbose raw, before any munging mocha
+verbose url resolving [ 'http://registry.npmjs.org/', './mocha' ]
+verbose url resolved http://registry.npmjs.org/mocha
+http GET http://registry.npmjs.org/mocha
+verbose raw, before any munging morgan
+verbose url resolving [ 'http://registry.npmjs.org/', './morgan' ]
+verbose url resolved http://registry.npmjs.org/morgan
+http GET http://registry.npmjs.org/morgan
+verbose raw, before any munging serve-favicon
+verbose url resolving [ 'http://registry.npmjs.org/', './serve-favicon' ]
+verbose url resolved http://registry.npmjs.org/serve-favicon
+http GET http://registry.npmjs.org/serve-favicon
+http 200 http://registry.npmjs.org/debug
+silly get cb [ 200,
+silly get cb   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+silly get cb     etag: '"2GBLECIZGRJRGAT9UREPHPLYD"',
+silly get cb     'content-type': 'application/json',
+silly get cb     'cache-control': 'max-age=300',
+silly get cb     'content-length': '36006',
+silly get cb     'accept-ranges': 'bytes',
+silly get cb     date: 'Sun, 13 Dec 2015 04:02:24 GMT',
+silly get cb     via: '1.1 varnish',
+silly get cb     age: '162',
+silly get cb     connection: 'keep-alive',
+silly get cb     'x-served-by': 'cache-sjc3131-SJC',
+silly get cb     'x-cache': 'HIT',
+silly get cb     'x-cache-hits': '270',
+silly get cb     'x-timer': 'S1449979344.340292,VS0,VE0',
+silly get cb     vary: 'Accept' } ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/harrison/.npm'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/harrison/.npm/debug'
+verbose mkdir done: /home/harrison/.npm/debug 755
+silly name, range, hasData 2 [ 'debug', '>=2.2.0- <2.3.0-', true ]
+silly versions [ 'debug',
+silly versions   [ '0.0.1',
+silly versions     '0.1.0',
+silly versions     '0.2.0',
+silly versions     '0.3.0',
+silly versions     '0.4.0',
+silly versions     '0.4.1',
+silly versions     '0.5.0',
+silly versions     '0.6.0',
+silly versions     '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.7.2',
+silly versions     '0.7.3',
+silly versions     '0.7.4',
+silly versions     '0.8.0',
+silly versions     '0.8.1',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.0.2',
+silly versions     '1.0.3',
+silly versions     '1.0.4',
+silly versions     '2.0.0',
+silly versions     '2.1.0',
+silly versions     '2.1.1',
+silly versions     '2.1.2',
+silly versions     '2.1.3',
+silly versions     '2.2.0' ] ]
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-x64-3.10.18',
+verbose bin dist   { shasum: 'f87057e995b1a1f6ae6a4960664137bc56f039da',
+verbose bin dist     tarball: 'http://registry.npmjs.org/debug/-/debug-2.2.0.tgz' } ]
+verbose addRemoteTarball [ 'http://registry.npmjs.org/debug/-/debug-2.2.0.tgz',
+verbose addRemoteTarball   'f87057e995b1a1f6ae6a4960664137bc56f039da' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1449979343604'
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1449979343604/1449979343604-0.8533370322547853'
+verbose mkdir done: /tmp/npm-1449979343604/1449979343604-0.8533370322547853 755
+verbose fetch to /tmp/npm-1449979343604/1449979343604-0.8533370322547853/tmp.tgz
+http GET http://registry.npmjs.org/debug/-/debug-2.2.0.tgz
+http 200 http://registry.npmjs.org/cookie-parser
+silly get cb [ 200,
+silly get cb   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+silly get cb     etag: '"37SWG7O41OY70OSSKGDUF15YE"',
+silly get cb     'content-type': 'application/json',
+silly get cb     'cache-control': 'max-age=300',
+silly get cb     'content-length': '20326',
+silly get cb     'accept-ranges': 'bytes',
+silly get cb     date: 'Sun, 13 Dec 2015 04:02:24 GMT',
+silly get cb     via: '1.1 varnish',
+silly get cb     age: '0',
+silly get cb     connection: 'keep-alive',
+silly get cb     'x-served-by': 'cache-sjc3130-SJC',
+silly get cb     'x-cache': 'HIT',
+silly get cb     'x-cache-hits': '1',
+silly get cb     'x-timer': 'S1449979344.338517,VS0,VE39',
+silly get cb     vary: 'Accept' } ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/harrison/.npm/cookie-parser'
+verbose mkdir done: /home/harrison/.npm/cookie-parser 755
+silly name, range, hasData 2 [ 'cookie-parser', '>=1.3.5- <1.4.0-', true ]
+silly versions [ 'cookie-parser', [] ]
+ERR! Error: No compatible version found: cookie-parser@'>=1.3.5- <1.4.0-'
+ERR! No valid targets found.
+ERR! Perhaps not compatible with your version of node?
+ERR!     at installTargetsError (/usr/share/npm/lib/cache.js:488:10)
+ERR!     at next_ (/usr/share/npm/lib/cache.js:438:17)
+ERR!     at next (/usr/share/npm/lib/cache.js:415:44)
+ERR!     at /usr/share/npm/lib/cache.js:408:5
+ERR!     at saved (/usr/share/npm/lib/utils/npm-registry-client/get.js:147:7)
+ERR!     at Object.oncomplete (/usr/lib/nodejs/graceful-fs.js:230:7)
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /home/harrison/coding/Russian-Alphabet-Game/app/routes/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.10.18
+ERR! command "node" "/usr/bin/npm" "install"
+ERR! cwd /home/harrison/coding/Russian-Alphabet-Game/app/routes
+ERR! node -v v0.6.12
+ERR! npm -v 1.1.4
+ERR! message No compatible version found: cookie-parser@'>=1.3.5- <1.4.0-'
+ERR! message No valid targets found.
+ERR! message Perhaps not compatible with your version of node?
+verbose exit [ 1, true ]

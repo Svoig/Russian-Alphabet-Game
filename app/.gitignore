@@ -1,2 +1,5 @@
 # Dependencies
 node_modules
+
+#Debug log
+./routes/npm-debug.log
