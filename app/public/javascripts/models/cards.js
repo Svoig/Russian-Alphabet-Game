@@ -3,32 +3,20 @@
 
 //A module to create a new deck of cards for a new round
 var Deck = (function() {
-
+  
+  //THe actual card constructor. RIght now it should return a new Card with a value, id, and vowel properties needed to start the game
   var Card = Backbone.Model.extend(
     {
       defaults: {vowel: false}
     });
 
-  var DeckCtor = {
+  function DeckCtor() {
+    //My data for the cards. Used to generate randomized decks (eventually)
+   this.rusArray = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы', 'Ь','Э','Ю','Я'];
 
-  //My data for the cards. Used to generate randomized decks (eventually)
-   rusArray: ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы', 'Ь','Э','Ю','Я'],
+   this.engArray = ['A','B','V','G','D','Ye','Yo','Zh','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','Kh','Ts','Ch','Sh','Shch','Hard sign', 'Ui', 'Soft sign','E','Yu','Ya'];
 
-   engArray: ['A','B','V','G','D','Ye','Yo','Zh','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','Kh','Ts','Ch','Sh','Shch','Hard sign', 'Ui', 'Soft sign','E','Yu','Ya'],
-
-  //THe actual card constructor. RIght now it should return a new Card with a value, id, and vowel properties needed to start the game
-  
-
-  generate: function() {
-    //Initialize vowel arrays to determine the vowel property of the cards.
-    var rusVowels = ['А','Я','Э','Е','У','Ю','О','Ё','И','Ы'];
-    var engVowels = ['A', 'Ya', 'E', 'Ye','U','Yu','O','Yo','I','Ui'];
-    //Give the cards a place to go
-    var deck = {};
-    //To make sure all card ids are unique
-    var counter =0;
-
-  //Loop through both arrays, comparing each letter with the vowels
+   this.generate = function() {
     this.rusArray.forEach(function(key1){
 
       rusVowels.forEach(function(key2) {
@@ -74,15 +62,13 @@ var Deck = (function() {
       }
 
     });
-
     return deck;
     }
-
-
-  }
+   }
+ 
 return DeckCtor;
 
-})();
+})(); 
 
 
 //module.exports = newDeck;
