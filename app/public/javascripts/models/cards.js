@@ -16,7 +16,17 @@ var Deck = (function() {
 
    this.engArray = ['A','B','V','G','D','Ye','Yo','Zh','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','Kh','Ts','Ch','Sh','Shch','Hard sign', 'Ui', 'Soft sign','E','Yu','Ya'];
 
+
    this.generate = function() {
+    //Vowel arrays to match with each card's letter
+    var rusVowels = ['А','Я','Э','Е','У','Ю','О','Ё','И','Ы'];
+
+    var engVowels = ['A', 'Ya', 'E', 'Ye','U','Yu','O','Yo','I','Ui'];
+    //Initialize a counter to give each card a unique ID
+    var counter = 0;
+    //Initialize an empty deck object to store all cards (may replace with a Backbone collection);
+    var deck = {};
+
     this.rusArray.forEach(function(key1){
 
       rusVowels.forEach(function(key2) {

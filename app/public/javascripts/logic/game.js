@@ -1,4 +1,4 @@
-var game = (function() {
+var Game = (function() {
 
 	function GameCtor()  {
 		this.narrowDeck = function(deck, numCards) {
@@ -6,7 +6,10 @@ var game = (function() {
 		};
 
 		this.init = function(numCards) {
-			var gameDeck = Deck.generate();
+
+			var activeDeck = new Deck();
+
+			var gameDeck = activeDeck.generate();
 
 			//A container for the card elements
 			var cardGrid = "<div class='cardGrid'></div>";
@@ -22,4 +25,4 @@ var game = (function() {
 	}
 	return GameCtor;
 
-} ) ();
+})();
