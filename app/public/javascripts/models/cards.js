@@ -24,26 +24,32 @@ var Deck = (function() {
     var engVowels = ['A', 'Ya', 'E', 'Ye','U','Yu','O','Yo','I','Ui'];
     //Initialize a counter to give each card a unique ID
     var counter = 0;
-    //Initialize an empty deck object to store all cards (may replace with a Backbone collection);
-    var deck = {};
+    //Backbone collections to keep the active deck organized by language
+    var CardCollection = Backbone.Collection.extend();
+
+    var cardCollection = new CardCollection({});
+
+    //Generating the deck
 
     this.rusArray.forEach(function(key1){
 
       rusVowels.forEach(function(key2) {
         //If the first letter is a vowel, make a new card with vowel: true
         if (key1 === key2) {
-          var newCard = new Card({vowel: true, id: counter, value: key1});
+          var newCard = new Card({lang: 'rus',vowel: true, id: counter, value: key1});
           //Increment the counter, and add the new card to the deck
           counter++;
 
-          deck[newCard.id] = newCard;
+          cardCollection.add(newCard);
+          //if(counter === 1) console.log('Yo!',cardCollection.get(0));
         }
 
       });
+
       //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
-      if (!(deck[counter-1].get('value') === key1)) {
-        var newCard = new Card({id: counter, value: key1});
-        deck[newCard.id]  = newCard;
+      if (!(cardCollection.get(counter-1).get('value') === key1)) {
+        var newCard = new Card({lang: 'rus', id: counter, value: key1});
+        cardCollection.add(newCard);
 
         counter++;
       }
@@ -55,25 +61,27 @@ var Deck = (function() {
       engVowels.forEach(function(key2) {
         //If the first letter is a vowel, make a new card with vowel: true
         if (key1 === key2) {
-          var newCard = new Card({vowel: true, id: counter, value: key1});
+          var newCard = new Card({lang: 'eng', vowel: true, id: counter, value: key1});
           //Increment the counter, and add the new card to the deck
           counter++;
 
-          deck[newCard.id] = newCard;
+          cardCollection.add(newCard);
         }
 
       });
-      //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
-      if (!(deck[counter-1].get('value') === key1)) {
-        var newCard = new Card({id: counter, value: key1});
-        deck[newCard.id]  = newCard;
+      //If the letter we're looking at (key1) has already been added, that means it's a vowel. Ignore it! If the letter is new, that means it's a consonant. Add a card with voweL: false!
+      
+      if (!(cardCollection.at(counter-1).get('value') === key1)) {
+        var newCard = new Card({lang: 'eng', id: counter, value: key1});
+          cardCollection.add(newCard);
 
         counter++;
       }
 
     });
-    return deck;
+    return cardCollection;
     }
+
    }
  
 return DeckCtor;

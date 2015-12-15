@@ -2,7 +2,11 @@ var Game = (function() {
 
 	function GameCtor()  {
 		this.narrowDeck = function(deck, numCards) {
-
+			var numArray = (function() {
+				for (var i = 0; i<numCards; i++) {
+					var randNum = Math.floor(Math.random()*66);
+				};
+			})();
 		};
 
 		this.init = function(numCards) {
