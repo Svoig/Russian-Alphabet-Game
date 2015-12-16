@@ -22,36 +22,50 @@ var Deck = (function() {
     var rusVowels = ['А','Я','Э','Е','У','Ю','О','Ё','И','Ы'];
 
     var engVowels = ['A', 'Ya', 'E', 'Ye','U','Yu','O','Yo','I','Ui'];
+
     //Initialize a counter to give each card a unique ID
     var counter = 0;
+
+    //Initlialize counters to give each letter matching IDs in both languages
+    var rusCounter = 1;
+
+    var engCounter = 1;
+
+
     //Backbone collections to keep the active deck organized by language
+
     var CardCollection = Backbone.Collection.extend();
 
-    var cardCollection = new CardCollection({});
+    var rusCollection = new CardCollection({});
+    var engCollection = new CardCollection({});
 
     //Generating the deck
 
     this.rusArray.forEach(function(key1){
-
+      //Initialize a counter for the Russian letters
       rusVowels.forEach(function(key2) {
+
         //If the first letter is a vowel, make a new card with vowel: true
         if (key1 === key2) {
-          var newCard = new Card({lang: 'rus',vowel: true, id: counter, value: key1});
+          var newCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key1});
           //Increment the counter, and add the new card to the deck
           counter++;
+          rusCounter++;
 
-          cardCollection.add(newCard);
-          //if(counter === 1) console.log('Yo!',cardCollection.get(0));
+          rusCollection.add(newCard);
+         
         }
 
       });
 
       //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
-      if (!(cardCollection.get(counter-1).get('value') === key1)) {
-        var newCard = new Card({lang: 'rus', id: counter, value: key1});
-        cardCollection.add(newCard);
+      //console.log(rusCounter);
+      if (!(rusCollection.at(rusCounter-1).get('value') === key1)) {
+        var newCard = new Card({lang: 'rus', matchID: rusCounter, id: counter, value: key1});
+        rusCollection.add(newCard);
 
         counter++;
+        rusCounter++;
       }
 
     });
@@ -61,25 +75,27 @@ var Deck = (function() {
       engVowels.forEach(function(key2) {
         //If the first letter is a vowel, make a new card with vowel: true
         if (key1 === key2) {
-          var newCard = new Card({lang: 'eng', vowel: true, id: counter, value: key1});
+          var newCard = new Card({lang: 'eng', vowel: true, matchId: engCounter, id: counter, value: key1});
           //Increment the counter, and add the new card to the deck
           counter++;
+          engCounter++;
 
-          cardCollection.add(newCard);
+          engCollection.add(newCard);
         }
 
       });
       //If the letter we're looking at (key1) has already been added, that means it's a vowel. Ignore it! If the letter is new, that means it's a consonant. Add a card with voweL: false!
-      
-      if (!(cardCollection.at(counter-1).get('value') === key1)) {
-        var newCard = new Card({lang: 'eng', id: counter, value: key1});
-          cardCollection.add(newCard);
+      if (!(engCollection.at(engCounter-1).get('value') === key1)) {
+        var newCard = new Card({lang: 'eng', matchId: engCounter, id: counter, value: key1});
+          engCollection.add(newCard);
 
         counter++;
+        engCounter++;
       }
 
     });
-    return cardCollection;
+    var allCards = {rus: rusCollection, eng: engCollection};
+    return allCards;
     }
 
    }
