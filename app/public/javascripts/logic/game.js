@@ -3,21 +3,17 @@ var Game = (function() {
 	function GameCtor()  {
 		this.narrowDeck = function(deck, numCards) {
 			var numArray=[];
-
 				for (var i = 0; i<numCards; i++) {
-					var randNum = Math.floor(Math.random()*66);
+					var randNum = Math.floor(Math.random()*33);
 					numArray[numArray.length] = randNum;
 				};
-
-				//SOMETHING IS GOING WRONG WITH Collection.findWhere!! But ONLY for deck.rus ...
+				//Different numbers of cards being removed each time... Why?
+				console.log(numArray, numArray.length);
 				numArray.forEach(function(card){
-					deck.rus.remove(deck.rus.findWhere({matchId: card}));
-					//console.log("Removing card ", card, " from rus");
-					deck.eng.remove(deck.eng.findWhere({matchId: card}));
-					if (!(deck.rus.at(card))) {
-						
-					}
-					//console.log("Removing card ", card, " from eng");
+					var rusCard = deck.rus.findWhere({matchId: card});
+					var engCard = deck.eng.findWhere({matchId: card});
+					deck.rus.remove(rusCard);
+					deck.eng.remove(engCard);
 				});
 
 				return deck;

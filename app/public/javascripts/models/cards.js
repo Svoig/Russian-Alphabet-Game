@@ -52,7 +52,6 @@ var Deck = (function() {
           counter++;
           if(newCard.matchId === undefined) {
             newCard.set("matchId", rusCounter);
-            console.log(rusCounter, newCard.attributes.matchId, "vowel");
           }
           rusCounter++;
 
@@ -66,10 +65,7 @@ var Deck = (function() {
       //console.log(rusCounter);
       if (!(rusCollection.at(rusCounter-1).get('value') === key1)) {
         var newCard = new Card({lang: 'rus', matchId: rusCounter, id: counter, value: key1});
-        if (newCard.matchId === undefined) {
-          newCard.set("matchId", rusCounter);
-          console.log(rusCounter, newCard.attributes.matchId);
-        }
+        
         rusCollection.add(newCard);
 
         counter++;
