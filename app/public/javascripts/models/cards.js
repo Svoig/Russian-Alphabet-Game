@@ -50,6 +50,10 @@ var Deck = (function() {
           var newCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key1});
           //Increment the counter, and add the new card to the deck
           counter++;
+          if(newCard.matchId === undefined) {
+            newCard.set("matchId", rusCounter);
+            console.log(rusCounter, newCard.attributes.matchId, "vowel");
+          }
           rusCounter++;
 
           rusCollection.add(newCard);
@@ -61,7 +65,11 @@ var Deck = (function() {
       //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
       //console.log(rusCounter);
       if (!(rusCollection.at(rusCounter-1).get('value') === key1)) {
-        var newCard = new Card({lang: 'rus', matchID: rusCounter, id: counter, value: key1});
+        var newCard = new Card({lang: 'rus', matchId: rusCounter, id: counter, value: key1});
+        if (newCard.matchId === undefined) {
+          newCard.set("matchId", rusCounter);
+          console.log(rusCounter, newCard.attributes.matchId);
+        }
         rusCollection.add(newCard);
 
         counter++;
