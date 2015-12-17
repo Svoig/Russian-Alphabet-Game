@@ -98,6 +98,8 @@ var Deck = (function() {
       }
 
     });
+
+
     var allCards = {rus: rusCollection, eng: engCollection};
     return allCards;
     }

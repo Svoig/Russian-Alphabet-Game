@@ -2,6 +2,7 @@ var Game = (function() {
 
 	function GameCtor()  {
 		this.narrowDeck = function(deck, numCards) {
+			//Given a Deck object (containing two Backbone collections), removes numCards cards from the deck
 			var numArray=[];
 				for (var i = 0; i<numCards; i++) {
 					var randNum = Math.floor(Math.random()*33);
@@ -24,10 +25,6 @@ var Game = (function() {
 			var activeDeck = new Deck();
 
 			var gameDeck = activeDeck.generate();
-
-			//A container for the card elements
-			var cardGrid = "<div class='cardGrid'></div>";
-			$("#board").append(cardGrid);
 
 			//Select some cards from the deck, depending on numCards specified by user
 
