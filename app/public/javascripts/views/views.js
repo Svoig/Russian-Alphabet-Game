@@ -22,24 +22,28 @@ var BoardView =  Backbone.View.extend({
 		var gridSize = Math.floor(Math.sqrt(numCards));
 
 		//Loop through each row (RUS)
-		var rusCounter = 1; //A counter to get each card in the deck
+		var rusCounter = 0; //A counter to get each card in the deck
 		var rowCounter = 1;
+
 		for (var i=0; i<gridSize+1; i++) {
-			var newRow = "<tr id='row" + rowCounter+"'></tr>"
-			//Loop through each column in the row
+			var newRow = $("<tr id='row'"+rowCounter+"></tr>");
 			for (var j=0; j<gridSize+1; j++) {
-				var newCell = "<td id='card" + rusCounter + "'></td>";
-				var newCard = new CardView({model: activeDeck.rus.get(rusCounter)});
-				//<tr>s are showing up in #board, but nothing is inside them...
-				$('#card'+rusCounter).append(newCard);
-				$('#row'+rusCounter).append(newCell);
-				rusCounter++;
+				if (activeDeck.rus.get(rusCounter)) {
+					var newCell = $("<td class= 'cardCell'>");
+
+					var newCard = new CardView({model: activeDeck.rus.get(rusCounter)});
+
+					newCard.$el.append(newCard.model.attributes.matchId);
+
+					newCell.append(newCard.$el);
+					newRow.append(newCell);
+					rusCounter++;
+				}
 			}
-			this.$el.append(newRow);
-			$("#board").append(this.$el);
+			$("#grid").append(newRow);
 			rowCounter++;
 		}
-
+	$("#board").append($("#grid"));
 
 	}
 });
