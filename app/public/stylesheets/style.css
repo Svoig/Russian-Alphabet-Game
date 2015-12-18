@@ -8,8 +8,30 @@ p {
   color: red;
 }
 
+/* Game control styles */
+#reset {
+	color: blue;
+}
 
-td.cardCell div {
+/* Hide translation span unless #reset:hover ... Not MVP*/
+#reset span {
+	display: none;
+}
+
+#reset:hover {
+	display: hidden;
+}
+
+#reset:hover span {
+	display: block;
+}
+
+/* Card and board styles */
+
+.flex {
+	display: flex;
+}
+.card {
 	font-weight: bold;
 	text-align: center;
 	vertical-align: middle;
@@ -22,3 +44,21 @@ td.cardCell div {
 	max-height: 30px;
 	margin: 10px;
 }
+
+.card:hover {
+	border-color: yellow;
+	background-color: red;
+}
+
+/* For now, flipped text just has alpha 0. Need to find a way to hide it entirely */
+.flipped div {
+	background: repeating-linear-gradient(
+		45deg,
+		red,
+		red 10px,
+		yellow 10px,
+		yellow 20px
+		);
+		color: rgba(0,0,0,0);
+
+},
