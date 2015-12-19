@@ -1,5 +1,4 @@
 //var Backbone = require('backbone');
-  //NPM can't find Backbone on my new Ubuntu setup, so working in the browser for right now...
 
 //A module to create a new deck of cards for a new round
 var Deck = (function() {
@@ -11,17 +10,45 @@ var Deck = (function() {
     });
 
   function DeckCtor() {
-    //My data for the cards. Used to generate randomized decks (eventually)
-   this.rusArray = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы', 'Ь','Э','Ю','Я'];
 
-   this.engArray = ['A','B','V','G','D','Ye','Yo','Zh','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','Kh','Ts','Ch','Sh','Shch','Hard sign', 'Ui', 'Soft sign','E','Yu','Ya'];
+    this.letters = [
+      {rus:'А', eng: 'A', vowel: true},
+      {rus: 'Б', eng: 'B', vowel: false},
+      {rus: 'В', eng: 'V', vowel: false},
+      {rus 'Г', eng: 'G', vowel: false},
+      {rus: 'Д', eng: 'D', vowel:false}, //5
+      {rus: 'Е', eng: 'Ye', vowel:true},
+      {rus: 'Ё', eng: 'Yo', vowel:true},
+      {rus: 'Ж', eng: 'Zh', vowel:false},
+      {rus: 'З', eng: 'Z' vowel:false},
+      {rus: 'И', eng: 'I', vowel:true}, //10
+      {rus: 'Й', eng: 'Y', vowel:false},
+      {rus: 'К', eng: 'K', vowel:false},
+      {rus: 'Л', eng: 'L', vowel:false},
+      {rus: 'М', eng: 'M', vowel:false},
+      {rus: 'Н', eng: 'N', vowel:false},  //15
+      {rus: 'О', eng: 'O', vowel:true},
+      {rus: 'П', eng: 'P', vowel:false},
+      {rus: 'Р', eng: 'R', vowel:false},
+      {rus: 'С', eng: 'S', vowel:false},
+      {rus: 'Т', eng: 'T', vowel:false}, //20
+      {rus: 'У', eng: 'U', vowel:true},
+      {rus: 'Ф', eng: 'F', vowel:false},
+      {rus: 'Х', eng: 'Kh', vowel:false},
+      {rus: 'Ц', eng: 'Ts', vowel:false},
+      {rus: 'Ч', eng: 'Ch', vowel:false}, //25
+      {rus: 'Ш', eng: 'Sh', vowel:false},
+      {rus: 'Щ', eng: 'Shch', vowel:false},
+      {rus: 'Ъ', eng: 'Hard sign', vowel:false},
+      {rus: 'Ы', eng: 'Ui', vowel:true},
+      {rus: 'Ь', eng: 'Soft sign', vowel:false}, //30
+      {rus: 'Э', eng: 'E', vowel:true},
+      {rus: 'Ю', eng: 'Yu', vowel:true},
+      {rus: 'Я', eng: 'Ya', vowel:true}, //33
 
+    ];
 
-   this.generate = function(shuffled) {
-//Vowel arrays to match with each card's letter
-    var rusVowels = ['А','Я','Э','Е','У','Ю','О','Ё','И','Ы'];
-
-    var engVowels = ['A', 'Ya', 'E', 'Ye','U','Yu','O','Yo','I','Ui'];
+   this.generate = function() {
 
     //Initialize a counter to give each card a unique ID
     var counter = 0;
@@ -39,17 +66,15 @@ var Deck = (function() {
     var rusCollection = new CardCollection({});
     var engCollection = new CardCollection({});
 
-
-    if(!shuffled) {
           //Generating the deck
 
-        this.rusArray.forEach(function(key1){
-          //Initialize a counter for the Russian letters
-          rusVowels.forEach(function(key2) {
+        this.letters.forEach(function(key){
 
+          
             //If the first letter is a vowel, make a new card with vowel: true
-            if (key1 === key2) {
-              var newCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key1});
+            if (key.vowel === true) {
+              var rusCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key.rus});
+              var engCard = new Card({lang: 'eng',vowel: true, matchId: rusCounter, id: counter, value: key.eng});
               //Increment the counter, and add the new card to the deck
               counter++;
               if(newCard.matchId === undefined) {
@@ -57,148 +82,38 @@ var Deck = (function() {
               }
               rusCounter++;
 
-              rusCollection.add(newCard);
+            } else {
+              var rusCard = new Card({lang: 'rus', vowel: false, matchId: rusCounter, id: counter, value: key.rus});
+              var engCard = new Card({lang: 'eng', vowel: false, matchId: rusCounter, id: counter, value: key.eng});
+            }
+
+            rusCollection.add(rusCard);
+            engCollection.add(engCard);
              
-            }
 
           });
 
-          //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
-          //console.log(rusCounter);
-          if (!(rusCollection.at(rusCounter-1).get('value') === key1)) {
-            var newCard = new Card({lang: 'rus', matchId: rusCounter, id: counter, value: key1});
-            
-            rusCollection.add(newCard);
-
-            counter++;
-            rusCounter++;
-          }
-
         });
-      //Loop through both arrays, comparing each letter with the vowels
-        this.engArray.forEach(function(key1){
-
-          engVowels.forEach(function(key2) {
-            //If the first letter is a vowel, make a new card with vowel: true
-            if (key1 === key2) {
-              var newCard = new Card({lang: 'eng', vowel: true, matchId: engCounter, id: counter, value: key1});
-              //Increment the counter, and add the new card to the deck
-              counter++;
-              engCounter++;
-
-              engCollection.add(newCard);
-            }
-
-          });
-          //If the letter we're looking at (key1) has already been added, that means it's a vowel. Ignore it! If the letter is new, that means it's a consonant. Add a card with voweL: false!
-          if (!(engCollection.at(engCounter-1).get('value') === key1)) {
-            var newCard = new Card({lang: 'eng', matchId: engCounter, id: counter, value: key1});
-              engCollection.add(newCard);
-
-            counter++;
-            engCounter++;
-          }
-
-        });
-
 
         var allCards = {rus: rusCollection, eng: engCollection};
 
-        return allCards
-    } else {
-       //Generating the deck
-
-        shuffled.rusArray.forEach(function(key1){
-          //Initialize a counter for the Russian letters
-          rusVowels.forEach(function(key2) {
-
-            //If the first letter is a vowel, make a new card with vowel: true
-            if (key1 === key2) {
-              var newCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key1});
-              //Increment the counter, and add the new card to the deck
-              counter++;
-              if(newCard.matchId === undefined) {
-                newCard.set("matchId", rusCounter);
-              }
-              rusCounter++;
-
-              rusCollection.add(newCard);
-             
-            }
-
-          });
-
-          //If the last card added was a vowel, don't add it again. If it's not a vowel, make a new card for the letter and set vowel: false
-          //console.log(rusCounter);
-          if (!(rusCollection.at(rusCounter-1).get('value') === key1)) {
-            var newCard = new Card({lang: 'rus', matchId: rusCounter, id: counter, value: key1});
-            
-            rusCollection.add(newCard);
-
-            counter++;
-            rusCounter++;
-          }
-
-        });
-      //Loop through both arrays, comparing each letter with the vowels
-        shuffled.engArray.forEach(function(key1){
-
-          engVowels.forEach(function(key2) {
-            //If the first letter is a vowel, make a new card with vowel: true
-            if (key1 === key2) {
-              var newCard = new Card({lang: 'eng', vowel: true, matchId: engCounter, id: counter, value: key1});
-              //Increment the counter, and add the new card to the deck
-              counter++;
-              engCounter++;
-
-              engCollection.add(newCard);
-            }
-
-          });
-          //If the letter we're looking at (key1) has already been added, that means it's a vowel. Ignore it! If the letter is new, that means it's a consonant. Add a card with voweL: false!
-          if (!(engCollection.at(engCounter-1).get('value') === key1)) {
-            var newCard = new Card({lang: 'eng', matchId: engCounter, id: counter, value: key1});
-              engCollection.add(newCard);
-
-            counter++;
-            engCounter++;
-          }
-
-        });
-
-
-        var allCards = {rus: rusCollection, eng: engCollection};
-
-        return allCards
-    }
+        return allCards;
 
     },
 
-    this.shuffle = function() {
-      //Empty arrays to hold randomized letters
-      var newRus = [];
-      var newEng = [];
+    this.shuffle = function(obj) {
+     
+      var rusShuffled = new CardCollection({});
+      var engShuffled = new CardCollection({});
 
-      //Loop through all the letters, placing a random one into the new array each step of the way
-      for (i=0; i < 32; i++) {
-        //Generate a random number for each language array
-        var rand = Math.floor(Math.random() * this.rusArray.length);
-        //Pop the letter at the random index and store it
-        var poppedRus = this.rusArray.slice(rand, rand+1)[0];
-        var poppedEng = this.engArray.slice(rand, rand+1)[0];
+      for(var i=0; i<33; i++) {
+        var rusKey = obj.rus.sample().rus;
+        var engKey = obj.eng.sample().eng;
 
-        this.rusArray.splice(rand, 1);
-        this.engArray.splice(rand, 1);
-
-        var rand2 = Math.floor(Math.random() * newRus.length);
-        //Add the popped letters to the array
-        newRus[newRus.length] = poppedRus;
-        newRus[rand2] = poppedEng;
+        rusShuffled.add(rusKey);
+        engShuffled.add(engKey);
       }
 
-      var shuffled = {rusArray: newRus, engArray: newEng};
-
-      return shuffled;
     }
 
    }
