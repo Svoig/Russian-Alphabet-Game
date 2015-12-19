@@ -4,6 +4,8 @@
 	//Initialize the game, creating our card models and collections
 	var activeDeck = activeGame.init();
 
+	var clickedCollection = new ClickedCollection({});
+
 	//Creating the views
 	var boardView = new BoardView({collection: activeDeck.rus});
 

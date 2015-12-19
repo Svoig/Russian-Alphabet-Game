@@ -101,7 +101,33 @@ var Deck = (function() {
 
 
     var allCards = {rus: rusCollection, eng: engCollection};
+
     return allCards;
+
+    },
+
+    this.shuffle = function() {
+      //Empty arrays to hold randomized letters
+      var newRus = [];
+      var newEng = [];
+
+      //Loop through all the letters, placing a random one into the new array each step of the way
+      for (i=0; i < this.rusArray.length-1; i++) {
+        //Generate a random number for each language array
+        var rusRand = Math.floor(Math.random() * this.rusArray.length);
+        var engRand = Math.floor(Math.random() * this.engArray.length);
+        //Pop the letter at the random index and store it
+        var poppedRus = this.rusArray.pop(rusRand);
+        var poppedEng = this.engArray.pop(engRand);
+        //Add the popped letters to the array
+        newRus[newRus.length] = poppedRus;
+        newEng[newEng.length] = poppedEng;
+
+      }
+
+      var shuffled = {rus: newRus, eng: newEng};
+
+      return shuffled;
     }
 
    }

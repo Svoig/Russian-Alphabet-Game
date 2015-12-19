@@ -66,10 +66,20 @@ var BoardView =  Backbone.View.extend({
 var CardView = Backbone.View.extend({
 	initialize: function() {
 		//this.flipSoon();
+		this.listenTo(clickedCollection, "add", this.match);
+	},
+
+	match: function(coll) {
+		if(coll.length === 2) {
+			if (coll.get(0).get('matchId') === coll.get(1).get('matchId')) {
+				coll.get(0).remove();
+				coll.get(1).remove();
+			}
+		}
 	},
 
 	render: function() {
-		var cardDiv = "<div class='card' id=" + this.model.attributes.matchId + ">" + this.model.attributes.matchId + "</div>";
+		var cardDiv = "<div class='card' id=" + this.model.attributes.matchId + ">" + this.model.attributes.value + "</div>";
 		this.$el.append(cardDiv);
 		this.$el.addClass("flipped");
 	},
@@ -77,8 +87,10 @@ var CardView = Backbone.View.extend({
 	flip: function() {
 		if($(this.$el).hasClass("flipped")) {
 			$(this.$el).removeClass("flipped");
+			clickedCollection.remove(this);
 		} else {
 			$(this.$el).addClass("flipped");
+			clickedCollection.add(this);
 		}
 	},
 

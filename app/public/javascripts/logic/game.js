@@ -24,7 +24,7 @@ var Game = (function() {
 
 			var activeDeck = new Deck();
 
-			var gameDeck = activeDeck.generate();
+			var gameDeck = activeDeck.generate(activeDeck.shuffle());
 
 			//Select some cards from the deck, depending on numCards specified by user
 
