@@ -15,6 +15,7 @@ var BoardView =  Backbone.View.extend({
 			$("#board").append(cardGrid);
 		}
 
+
 		//Make sure the deck's collections are the same length
 		if(!(deck.rus.length === deck.eng.length)) return "ERROR, LENGTHS DO NOT MATCH";
 		
