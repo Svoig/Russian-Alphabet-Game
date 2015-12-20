@@ -15,12 +15,12 @@ var Deck = (function() {
       {rus:'А', eng: 'A', vowel: true},
       {rus: 'Б', eng: 'B', vowel: false},
       {rus: 'В', eng: 'V', vowel: false},
-      {rus 'Г', eng: 'G', vowel: false},
+      {rus: 'Г', eng: 'G', vowel: false},
       {rus: 'Д', eng: 'D', vowel:false}, //5
       {rus: 'Е', eng: 'Ye', vowel:true},
       {rus: 'Ё', eng: 'Yo', vowel:true},
       {rus: 'Ж', eng: 'Zh', vowel:false},
-      {rus: 'З', eng: 'Z' vowel:false},
+      {rus: 'З', eng: 'Z', vowel:false},
       {rus: 'И', eng: 'I', vowel:true}, //10
       {rus: 'Й', eng: 'Y', vowel:false},
       {rus: 'К', eng: 'K', vowel:false},
@@ -61,7 +61,6 @@ var Deck = (function() {
 
     //Backbone collections to keep the active deck organized by language
 
-    var CardCollection = Backbone.Collection.extend();
 
     var rusCollection = new CardCollection({});
     var engCollection = new CardCollection({});
@@ -77,9 +76,7 @@ var Deck = (function() {
               var engCard = new Card({lang: 'eng',vowel: true, matchId: rusCounter, id: counter, value: key.eng});
               //Increment the counter, and add the new card to the deck
               counter++;
-              if(newCard.matchId === undefined) {
-                newCard.set("matchId", rusCounter);
-              }
+              
               rusCounter++;
 
             } else {
@@ -93,7 +90,6 @@ var Deck = (function() {
 
           });
 
-        });
 
         var allCards = {rus: rusCollection, eng: engCollection};
 
@@ -107,12 +103,16 @@ var Deck = (function() {
       var engShuffled = new CardCollection({});
 
       for(var i=0; i<33; i++) {
-        var rusKey = obj.rus.sample().rus;
-        var engKey = obj.eng.sample().eng;
+        var rusKey = _.sample(obj.rus,1).rus;
+        var engKey = _.sample(obj.eng,1).eng;
 
         rusShuffled.add(rusKey);
         engShuffled.add(engKey);
       }
+
+      var shuffled = {rus: rusShuffled, eng: engShuffled};
+
+      return shuffled;
 
     }
 
@@ -121,6 +121,9 @@ var Deck = (function() {
 return DeckCtor;
 
 })(); 
+
+
+var CardCollection = Backbone.Collection.extend();
 
 var ClickedCollection = Backbone.Collection.extend({});
 
