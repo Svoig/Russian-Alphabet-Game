@@ -53,10 +53,9 @@ var Deck = (function() {
     //Initialize a counter to give each card a unique ID
     var counter = 0;
 
-    //Initlialize counters to give each letter matching IDs in both languages
-    var rusCounter = 1;
+    //Initlialize counters to give each letter matching IDs
+    var matchCounter = 1;
 
-    var engCounter = 1;
 
 
     //Backbone collections to keep the active deck organized by language
@@ -68,31 +67,28 @@ var Deck = (function() {
           //Generating the deck
 
         this.letters.forEach(function(key){
-
           
             //If the first letter is a vowel, make a new card with vowel: true
             if (key.vowel === true) {
-              var rusCard = new Card({lang: 'rus',vowel: true, matchId: rusCounter, id: counter, value: key.rus});
-              var engCard = new Card({lang: 'eng',vowel: true, matchId: rusCounter, id: counter, value: key.eng});
-              //Increment the counter, and add the new card to the deck
-              counter++;
-              
-              rusCounter++;
-
+              var rusCard = new Card({lang: 'rus',vowel: true, matchId: matchCounter, id: counter, value: key.rus});
+              var engCard = new Card({lang: 'eng',vowel: true, matchId: matchCounter, id: counter, value: key.eng});
+  
             } else {
-              var rusCard = new Card({lang: 'rus', vowel: false, matchId: rusCounter, id: counter, value: key.rus});
-              var engCard = new Card({lang: 'eng', vowel: false, matchId: rusCounter, id: counter, value: key.eng});
+              var rusCard = new Card({lang: 'rus', vowel: false, matchId: matchCounter, id: counter, value: key.rus});
+              var engCard = new Card({lang: 'eng', vowel: false, matchId: matchCounter, id: counter, value: key.eng});
             }
 
             rusCollection.add(rusCard);
             engCollection.add(engCard);
+            
+            counter++;  
+            matchCounter++;
              
 
           });
 
 
         var allCards = {rus: rusCollection, eng: engCollection};
-
         return allCards;
 
     },
@@ -103,9 +99,12 @@ var Deck = (function() {
       var engShuffled = new CardCollection({});
 
       for(var i=0; i<33; i++) {
+        //I know everything is working fine except _.sample!
+        //These two are undefined... Problem with sample?
         var rusKey = _.sample(obj.rus,1).rus;
         var engKey = _.sample(obj.eng,1).eng;
-
+        console.log(_.sample(obj.rus));
+        //_.sample(obj.eng,1) returns undefined
         rusShuffled.add(rusKey);
         engShuffled.add(engKey);
       }
