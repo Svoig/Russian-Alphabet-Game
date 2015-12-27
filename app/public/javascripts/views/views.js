@@ -8,6 +8,11 @@ var BoardView =  Backbone.View.extend({
 	},
 
 	render: function(deck) {
+		//	//	//	//	//	//	//	//	//	//	//	//	//	//
+		// NEED TO REWRITE TO WORK WITH **ONE** COLLECTION!!//
+		//	//	//	//	//	//	//	//	//	//	//	//	//	//
+
+
 		this.$el.html("");
 		//If there's no container for the card elements, create one
 		if(!($('#cardGrid'))) {
@@ -16,9 +21,6 @@ var BoardView =  Backbone.View.extend({
 		}
 
 
-		//Make sure the deck's collections are the same length
-		if(!(deck.rus.length === deck.eng.length)) return "ERROR, LENGTHS DO NOT MATCH";
-		
 		//A variable to hold the length of the colletions
 		var numCards = deck.rus.length;
 

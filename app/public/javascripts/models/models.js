@@ -58,11 +58,9 @@ var Deck = (function() {
 
 
 
-    //Backbone collections to keep the active deck organized by language
+    //One Backbone collection to hold all the cards. Will be shuffled later
 
-
-    var rusCollection = new CardCollection({});
-    var engCollection = new CardCollection({});
+    var cardCollection = new CardCollection({});
 
           //Generating the deck
 
@@ -78,40 +76,35 @@ var Deck = (function() {
               var engCard = new Card({lang: 'eng', vowel: false, matchId: matchCounter, id: counter, value: key.eng});
             }
 
-            rusCollection.add(rusCard);
-            engCollection.add(engCard);
+            cardCollection.add(rusCard);
+            cardCollection.add(engCard);
             
             counter++;  
             matchCounter++;
              
 
           });
+        //Might need to do something about the empty models [0] in both collections
 
-
-        var allCards = {rus: rusCollection, eng: engCollection};
-        return allCards;
+        return cardCollection;
 
     },
 
     this.shuffle = function(obj) {
-     
-      var rusShuffled = new CardCollection({});
-      var engShuffled = new CardCollection({});
 
-      for(var i=0; i<33; i++) {
-        //I know everything is working fine except _.sample!
-        //These two are undefined... Problem with sample?
-        var rusKey = _.sample(obj.rus,1).rus;
-        var engKey = _.sample(obj.eng,1).eng;
-        console.log(_.sample(obj.rus));
-        //_.sample(obj.eng,1) returns undefined
-        rusShuffled.add(rusKey);
-        engShuffled.add(engKey);
-      }
+      //Shuffle the cards
+      var shuffled = _.shuffle(obj.models);
 
-      var shuffled = {rus: rusShuffled, eng: engShuffled};
+      //New collection for the shuffled cards
+      var shuffledColl = new CardCollection({});
 
-      return shuffled;
+
+      //Add the each card to the new collection, in newly shuffled order
+      shuffled.forEach(function(key){
+        shuffledColl.add(key);
+      });
+
+      return shuffledColl;
 
     }
 
