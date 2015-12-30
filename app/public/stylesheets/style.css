@@ -46,16 +46,16 @@ p {
 }
 
 .card:hover {
-	border-color: yellow;
-	background-color: red;
+	border-color: blue;
+	background-color: yellow;
 }
 
 /* For now, flipped text just has alpha 0. Need to find a way to hide it entirely */
 .flipped div {
 	background: repeating-linear-gradient(
 		45deg,
-		red,
-		red 10px,
+		blue,
+		blue 10px,
 		yellow 10px,
 		yellow 20px
 		);

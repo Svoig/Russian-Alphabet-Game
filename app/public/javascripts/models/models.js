@@ -48,50 +48,45 @@ var Deck = (function() {
 
     ];
 
+
    this.generate = function() {
-
-    //Initialize a counter to give each card a unique ID
-    var counter = 0;
-
-    //Initlialize counters to give each letter matching IDs
-    var matchCounter = 1;
-
-
-
     //One Backbone collection to hold all the cards. Will be shuffled later
 
     var cardCollection = new CardCollection({});
 
           //Generating the deck
+        //Unique ID for each card
+        var rusCounter = 0;
+        //33 letters, so start eng at 34
+        var engCounter = 33;
+        //Matching ID for each pair of eng/rus letters
+        var matchCounter = 1;
 
         this.letters.forEach(function(key){
           
             //If the first letter is a vowel, make a new card with vowel: true
             if (key.vowel === true) {
-              var rusCard = new Card({lang: 'rus',vowel: true, matchId: matchCounter, id: counter, value: key.rus});
-              var engCard = new Card({lang: 'eng',vowel: true, matchId: matchCounter, id: counter, value: key.eng});
+              var rusCard = new Card({lang: 'rus',vowel: true, matchId: matchCounter, id: rusCounter, value: key.rus});
+              var engCard = new Card({lang: 'eng',vowel: true, matchId: matchCounter, id: engCounter, value: key.eng});
   
             } else {
-              var rusCard = new Card({lang: 'rus', vowel: false, matchId: matchCounter, id: counter, value: key.rus});
-              var engCard = new Card({lang: 'eng', vowel: false, matchId: matchCounter, id: counter, value: key.eng});
+              var rusCard = new Card({lang: 'rus', vowel: false, matchId: matchCounter, id: rusCounter,value: key.rus});
+              var engCard = new Card({lang: 'eng', vowel: false, matchId: matchCounter, id: engCounter, value: key.eng});
             }
-
             cardCollection.add(rusCard);
             cardCollection.add(engCard);
-            
-            counter++;  
-            matchCounter++;
-             
+
+          rusCounter++;
+          engCounter++;
+          matchCounter++;             
 
           });
-        //Might need to do something about the empty models [0] in both collections
 
         return cardCollection;
 
     },
 
     this.shuffle = function(obj) {
-
       //Shuffle the cards
       var shuffled = _.shuffle(obj.models);
 
@@ -99,11 +94,13 @@ var Deck = (function() {
       var shuffledColl = new CardCollection({});
 
 
-      //Add the each card to the new collection, in newly shuffled order
+      //Add the each card to the new collection, in newly shuffled order (unless it's an e.Model)
       shuffled.forEach(function(key){
-        shuffledColl.add(key);
+        if (key.get("matchId")) {
+          shuffledColl.add(key);
+        }
       });
-
+      console.log(shuffledColl);
       return shuffledColl;
 
     }
