@@ -44,23 +44,20 @@ var BoardView =  Backbone.View.extend({
 
 			//Loop through each column within each row
 			for (var j=0; j<gridSize+1; j++) {
-				//Was having a problem where the last number wasn't actually in activeDeck.rus, so double checking that
-				if (deck.get(cellCounter)) {
 					//A new <td> for each cell (column within a row)
 					var newCell = $("<td class= 'cardCell'>");
 
 					//A cardView to display within the cell
+					if (deck.models[cellCounter] !== undefined){
+						var newCard = new CardView({model: deck.models[cellCounter]});
+						//First console log (and first card generated) is always undefined. FIGURE THIS OUT!!
+						newCard.render();
 
-					var newCard = new CardView({model: deck.models[cellCounter]});
-					//First console log (and first card generated) is always undefined. FIGURE THIS OUT!!
-					console.log(newCard.model.get("id"));
-					newCard.render();
 
-
-					newCell.append(newCard.$el);
-					newRow.append(newCell);
-					cellCounter++;
-				}
+						newCell.append(newCard.$el);
+						newRow.append(newCell);
+						cellCounter++;
+					}
 			}
 			$("#grid").append(newRow);
 			rowCounter++;

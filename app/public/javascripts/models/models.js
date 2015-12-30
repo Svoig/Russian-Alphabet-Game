@@ -100,7 +100,9 @@ var Deck = (function() {
           shuffledColl.add(key);
         }
       });
-      console.log(shuffledColl);
+
+      shuffledColl.remove(shuffledColl.models[0]);
+
       return shuffledColl;
 
     }
