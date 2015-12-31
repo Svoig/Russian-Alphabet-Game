@@ -5,9 +5,19 @@ var BoardView =  Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.collection, "change", this.render);
+		this.listenTo(this.collection, "add", this.updateCounter);
+	},
+
+	updateCounter: function() {
+		Deck.counter++;
+		Deck.matchCounter++;
 	},
 
 	render: function(deck) {
+		//	//	//	//	//	//	//	//	//	//	//	//	//	//
+		// NEED TO REWRITE TO WORK WITH **ONE** COLLECTION!!//
+		//	//	//	//	//	//	//	//	//	//	//	//	//	//
+
 		this.$el.html("");
 		//If there's no container for the card elements, create one
 		if(!($('#cardGrid'))) {
@@ -16,17 +26,14 @@ var BoardView =  Backbone.View.extend({
 		}
 
 
-		//Make sure the deck's collections are the same length
-		if(!(deck.rus.length === deck.eng.length)) return "ERROR, LENGTHS DO NOT MATCH";
-		
 		//A variable to hold the length of the colletions
-		var numCards = deck.rus.length;
+		var numCards = deck.length;
 
 		//Do the math to figure out how big the square grid should be based on how many cards we have
 		var gridSize = Math.floor(Math.sqrt(numCards));
 
 		//Loop through each row (RUS)
-		var rusCounter = 0; //A counter to get each card in the deck
+		var cellCounter = 0; //A counter to get each card in the deck
 		var rowCounter = 1;
 
 		//Loop through each row
@@ -37,20 +44,20 @@ var BoardView =  Backbone.View.extend({
 
 			//Loop through each column within each row
 			for (var j=0; j<gridSize+1; j++) {
-				//Was having a problem where the last number wasn't actually in activeDeck.rus, so double checking that
-				if (activeDeck.rus.get(rusCounter)) {
 					//A new <td> for each cell (column within a row)
 					var newCell = $("<td class= 'cardCell'>");
 
 					//A cardView to display within the cell
-					var newCard = new CardView({model: activeDeck.rus.get(rusCounter)});
-					newCard.render();
+					if (deck.models[cellCounter] !== undefined){
+						var newCard = new CardView({model: deck.models[cellCounter]});
+						//First console log (and first card generated) is always undefined. FIGURE THIS OUT!!
+						newCard.render();
 
 
-					newCell.append(newCard.$el);
-					newRow.append(newCell);
-					rusCounter++;
-				}
+						newCell.append(newCard.$el);
+						newRow.append(newCell);
+						cellCounter++;
+					}
 			}
 			$("#grid").append(newRow);
 			rowCounter++;

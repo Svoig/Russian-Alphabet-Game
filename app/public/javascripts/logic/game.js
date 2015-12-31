@@ -5,7 +5,7 @@ var Game = (function() {
 			//Given a Deck object (containing two Backbone collections), removes numCards cards from the deck
 			var numArray=[];
 				for (var i = 0; i<numCards; i++) {
-					var randNum = Math.floor(Math.random()*33);
+					var randNum = Math.floor(Math.random()*66);
 					numArray[numArray.length] = randNum;
 				};
 				//Different numbers of cards being removed each time... Why?
@@ -24,7 +24,7 @@ var Game = (function() {
 
 			var activeDeck = new Deck();
 
-			var gameDeck = activeDeck.generate(activeDeck.shuffle());
+			var gameDeck = activeDeck.shuffle(activeDeck.generate());
 
 			//Select some cards from the deck, depending on numCards specified by user
 

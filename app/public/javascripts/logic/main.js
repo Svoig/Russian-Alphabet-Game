@@ -7,9 +7,9 @@
 	var clickedCollection = new ClickedCollection({});
 
 	//Creating the views
-	var boardView = new BoardView({collection: activeDeck.rus});
+	var boardView = new BoardView({collection: activeDeck});
 
-	var controlView = new ControlView({collection: activeDeck.rus});
+	var controlView = new ControlView({collection: activeDeck});
 
 	boardView.render(activeDeck);
 	controlView.render();
