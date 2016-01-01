@@ -13,17 +13,15 @@ var BoardView =  Backbone.View.extend({
 		Deck.matchCounter++;
 	},
 
-	render: function(deck) {
-		//	//	//	//	//	//	//	//	//	//	//	//	//	//
-		// NEED TO REWRITE TO WORK WITH **ONE** COLLECTION!!//
-		//	//	//	//	//	//	//	//	//	//	//	//	//	//
-
-		this.$el.html("");
+	render: function() {
+		//Ease of access
+		var deck = this.collection;
 		//If there's no container for the card elements, create one
-		if(!($('#cardGrid'))) {
-			var cardGrid = "<div id='cardGrid'></div>";
-			$("#board").append(cardGrid);
-		}
+		if($('#grid').length === 0) {
+			console.log("No grid! Rendering ", activeDeck);
+			var grid = "<div id='grid'></div>";
+			$("#board").append(grid);
+		} else $('#grid').html('');
 
 
 		//A variable to hold the length of the colletions
@@ -88,20 +86,21 @@ var CardView = Backbone.View.extend({
 			if (clickedCollection.models[0].attributes.model.get('matchId') === clickedCollection.models[1].attributes.model.get('matchId')) {
 				console.log("They match!");
 
+				console.log(clickedCollection.models[0]);
 
-				clickedCollection.models[0].innerHTML = '';
-				clickedCollection.models[1].innerHTML = '';
+				activeDeck.remove(clickedCollection.models[0].attributes.model);
+				activeDeck.remove(clickedCollection.models[1].attributes.model);
 
-				clickedCollection.remove(clickedCollection.models[0]);
-				clickedCollection.remove(clickedCollection.models[1]);
+				$("#grid").remove();
 
 				boardView.render();
 				
 			}
+			
+			clickedCollection.reset();
+
 		}
 
-		var clear = function() {clickedCollection.reset()};
-		var clearTimer = window.setTimeout(clear, 1000);
 	},
 
 	render: function() {
