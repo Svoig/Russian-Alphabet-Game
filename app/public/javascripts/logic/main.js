@@ -2,7 +2,7 @@
 	//Create a game for everything to run in
 	var activeGame = new Game();
 	//Initialize the game, creating our card models and collections
-	var activeDeck = activeGame.init();
+	var activeDeck = activeGame.narrowDeck(activeGame.init(), 20);
 
 	var clickedCollection = new ClickedCollection({});
 
