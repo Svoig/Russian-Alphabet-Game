@@ -77,16 +77,35 @@ var CardView = Backbone.View.extend({
 		this.listenTo(clickedCollection, "add", this.match);
 	},
 
-	match: function(coll) {
-		if(coll.length === 2) {
-			if (coll.get(0).get('matchId') === coll.get(1).get('matchId')) {
-				coll.get(0).remove();
-				coll.get(1).remove();
+	goodbye: function() {
+		this.remove();
+	},
+
+	match: function() {
+		//CAN'T MAKE THEM GO AWAY!!
+		if(clickedCollection.length === 2) {
+			console.log("Two models clicked!");
+			if (clickedCollection.models[0].attributes.model.get('matchId') === clickedCollection.models[1].attributes.model.get('matchId')) {
+				console.log("They match!");
+
+
+				clickedCollection.models[0].innerHTML = '';
+				clickedCollection.models[1].innerHTML = '';
+
+				clickedCollection.remove(clickedCollection.models[0]);
+				clickedCollection.remove(clickedCollection.models[1]);
+
+				boardView.render();
+				
 			}
 		}
+
+		var clear = function() {clickedCollection.reset()};
+		var clearTimer = window.setTimeout(clear, 1000);
 	},
 
 	render: function() {
+		clickedCollection.reset();
 		var cardDiv = "<div class='card' id=" + this.model.attributes.matchId + ">" + this.model.attributes.value + "</div>";
 		this.$el.append(cardDiv);
 		this.$el.addClass("flipped");

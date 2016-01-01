@@ -2,20 +2,17 @@ var Game = (function() {
 
 	function GameCtor()  {
 		this.narrowDeck = function(deck, numCards) {
-			//Given a Deck object (containing two Backbone collections), removes numCards cards from the deck
-			var numArray=[];
-				for (var i = 0; i<numCards; i++) {
-					var randNum = Math.floor(Math.random()*66);
-					numArray[numArray.length] = randNum;
-				};
-				//Different numbers of cards being removed each time... Why?
-				console.log(numArray, numArray.length);
-				numArray.forEach(function(card){
-					var rusCard = deck.rus.findWhere({matchId: card});
-					var engCard = deck.eng.findWhere({matchId: card});
-					deck.rus.remove(rusCard);
-					deck.eng.remove(engCard);
-				});
+			//The deck is already shuffled, so we can just pop off any number of pairs of cards.
+			//To pop off a PAIR, we need the matchId of the first card popped off (ie the last card in the deck).
+
+			for (var i=0; i< numCards+1; i++) {
+				var matchPop = deck.pop().get('matchId');
+				
+				var matched = deck.findWhere({'matchId': matchPop});
+
+				deck.remove(matched);
+
+			}
 
 				return deck;
 		};
